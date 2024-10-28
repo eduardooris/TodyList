@@ -1,0 +1,42 @@
+export const Design = {
+  Brand: {
+    Dark: "#096C68",
+    Default: "#24A19C",
+    Background: "#F2F9F9",
+    Focused: "#A9CEC7",
+    Pressed: "#0F4D40",
+    Outline: "#F2F9F9",
+  },
+  Neutral: {
+    Primary: "#1D3066",
+    Secondary: "#737FA0",
+    Ghost: "#A9B0C5",
+    Line: "#E3E6EC",
+    Background: "#F6F7F9",
+    White: "#FFFFFF",
+  },
+  Success: {
+    Dark: "#117A7A",
+    Default: "#17A1A1",
+    Background: "#E3F3F3",
+    Focused: "#B8D7D7",
+    Pressed: "#0F6666",
+    Outline: "#8BD0D0",
+  },
+  Error: {
+    Dark: "#CC3A55",
+    Default: "#FF486A",
+    Background: "#FFE9ED",
+    Focused: "#F0C4CC",
+    Pressed: "#B2324A",
+    Outline: "#FFA3B4",
+  },
+  Warning: {
+    Dark: "#E0740F",
+    Default: "#FD8311",
+    Background: "#FEF0E2",
+    Focused: "#F6D5B7",
+    Pressed: "#CC6A0E",
+    Outline: "#FEC188",
+  },
+};

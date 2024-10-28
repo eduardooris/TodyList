@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import Router from "./src/router";
+import { ApolloProvider } from "@apollo/client";
+import { Provider } from "react-redux";
+import client from "./src/store/apollo";
+import store from "./src/store";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <GestureHandlerRootView>
+            <Router />
+        </GestureHandlerRootView>
+      </Provider>
+    </ApolloProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

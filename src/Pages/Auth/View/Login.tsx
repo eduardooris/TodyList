@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   containerHeader: {
-    marginVertical: 20,
+    marginVertical: 60,
   },
   register: {
     textAlign: "center",

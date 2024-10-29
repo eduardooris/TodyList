@@ -12,10 +12,10 @@ interface IRegister {
 
 export const useRegisterLogic = () => {
   const [form, setForm] = useForm<IRegister>({
-    username: "admin2",
-    email: "admin2",
-    password: "admin2",
-    confirmPassword: "admin2",
+    username: "admin4",
+    email: "admin4",
+    password: "admin4",
+    confirmPassword: "admin4",
   });
   const dispatch = useDispatch();
   const { error, loading } = useSelector((state: RootState) => {

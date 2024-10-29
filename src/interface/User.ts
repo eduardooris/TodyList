@@ -1,10 +1,10 @@
 import { Task } from "./Taks";
 
 interface User {
-  id: string;
-  token: string;
-  email: string;
-  username: string;
+  id?: string;
+  token?: string;
+  email?: string;
+  username?: string;
 }
 
 interface UserDetail {

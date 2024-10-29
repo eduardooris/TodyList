@@ -22,10 +22,7 @@ export function* registerSaga(action: Action) {
     });
 
     yield AsyncStorage.setItem("@TokenApi", data.register.token);
-    yield call(
-      getTasksSaga,
-      setTasksRequest({ isn_usuario: data.register.id })
-    );
+    yield put(setTasksRequest({ isn_usuario: data.register.id }));
     yield put(setLoginSuccess(data.register));
   } catch (error: any) {
     yield put(setLoginFailure(error.message));

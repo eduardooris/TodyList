@@ -18,9 +18,18 @@ export function* userDetailSagas(action: Action) {
       mutation: GET_USER,
       variables: { isn_usuario: action.payload.id },
     });
-    yield put(
-      setUserDetailSuccess({ ...action.payload, tasks: data.getTasks })
-    );
+
+    const { tasks } = data.getTasks;
+
+    const user = {
+      id: action.payload.id,
+      username: action.payload.username,
+      email: action.payload.email,
+      token: action.payload.token,
+      ...tasks,
+    };
+
+    yield put(setUserDetailSuccess(user));
   } catch (error: any) {
     yield put(setUserDetailFailure(error.message));
   }

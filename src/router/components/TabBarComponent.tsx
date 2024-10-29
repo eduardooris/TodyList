@@ -39,7 +39,7 @@ const TabBarComponent = ({ state, navigation, descriptors }: Props) => {
   const handleAnimate = (index: number) => {
     "worklet";
     translateX.value = withTiming(index * TAB_WIDTH, {
-      duration: 500,
+      duration: 250,
     });
   };
   useEffect(() => {
@@ -80,8 +80,10 @@ const TabBarComponent = ({ state, navigation, descriptors }: Props) => {
             target: route.key,
           });
         };
-        const routeName = route.name.toLowerCase() as keyof typeof routes;
-        const icon = routes[routeName]?.icon;
+        type IconName = React.ComponentProps<typeof MaterialIcons>["name"];
+        const routeName: keyof typeof routes =
+          route.name.toLowerCase() as keyof typeof routes;
+        const icon: IconName = routes[routeName]?.icon as IconName;
 
         return (
           <Pressable

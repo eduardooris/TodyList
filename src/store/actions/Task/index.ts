@@ -1,4 +1,4 @@
-import { TYPE_TASKS } from "../../../interface/Taks";
+import { TYPE_TASKS, Task } from "../../../interface/Taks";
 
 const setTasksRequest = (payload: { isn_usuario: string }) => {
   return {
@@ -7,7 +7,7 @@ const setTasksRequest = (payload: { isn_usuario: string }) => {
   };
 };
 
-const setTasksSuccess = (payload: any) => {
+const setTasksSuccess = (payload: Task) => {
   return {
     type: TYPE_TASKS.GET_TASKS_SUCCESS,
     payload,
@@ -21,4 +21,11 @@ const setTasksFailure = (error: string) => {
   };
 };
 
-export { setTasksRequest, setTasksSuccess, setTasksFailure };
+const setTasksUpdate = (payload: { id: string; completed: boolean }) => {
+  return {
+    type: TYPE_TASKS.UPDATE_TASKS_REQUEST,
+    payload,
+  };
+};
+
+export { setTasksRequest, setTasksSuccess, setTasksFailure, setTasksUpdate };

@@ -2,8 +2,9 @@ interface Task {
   id: string;
   title: string;
   isn_usuario: string;
-  description: string
+  description: string;
   completed: boolean;
+  date: string;
   comments: [comments];
 }
 
@@ -19,6 +20,7 @@ enum TYPE_TASKS {
   GET_TASKS_REQUEST = "GET_TASKS_REQUEST",
   GET_TASKS_SUCCESS = "GET_TASKS_SUCCESS",
   GET_TASKS_FAILURE = "GET_TASKS_FAILURE",
+  UPDATE_TASKS_REQUEST = "UPDATE_TASKS_REQUEST",
 }
 
 interface TasksState {

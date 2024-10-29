@@ -20,10 +20,7 @@ export default function* getTokenSaga(action: Action) {
       },
     });
     yield AsyncStorage.setItem("@TokenApi", data.getAppInit.token);
-    yield call(
-      getTasksSaga,
-      setTasksRequest({ isn_usuario: data.getAppInit.id })
-    );
+    yield put(setTasksRequest({ isn_usuario: data.getAppInit.id }));
     yield put(setLoginSuccess(data.getAppInit));
   } catch (error: any) {
     yield put(setLoginFailure(error.message));

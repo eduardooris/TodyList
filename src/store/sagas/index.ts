@@ -7,13 +7,15 @@ import { getTasksSaga } from "./Tasks/tasksSagas";
 import { userDetailSagas } from "./Users/userSagas";
 import { registerSaga } from "./Login/RegisterSagas";
 import getTokenSaga from "./Login/TokenSagas";
+import updateTaskSaga from "./Tasks/updateTaskSaga";
 function* rootSaga() {
   yield takeEvery(TYPE_USER.LOGIN_REQUEST, loginSaga);
   yield takeEvery(TYPE_TASKS.GET_TASKS_REQUEST, getTasksSaga);
   yield takeEvery(TYPE_USERS.GET_USERS_REQUEST, usersSagas);
   yield takeEvery(TYPE_USER_DETAIL.GET_USER_DETAIL_REQUEST, userDetailSagas);
   yield takeEvery(TYPE_USER.REGISTER_REQUEST, registerSaga);
-  yield takeEvery(TYPE_USER.TOKEN_REQUEST, getTokenSaga)
+  yield takeEvery(TYPE_USER.TOKEN_REQUEST, getTokenSaga);
+  yield takeEvery(TYPE_TASKS.UPDATE_TASKS_REQUEST, updateTaskSaga);
 }
 
 export default rootSaga;

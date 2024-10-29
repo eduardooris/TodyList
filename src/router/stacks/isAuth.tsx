@@ -1,4 +1,4 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { BottomTabBarProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import UserStack from "./UserStack";
 import TabBar from "../components/TabBar";
 import TaskStack from "./TaskStack";
@@ -15,7 +15,7 @@ const screenOptions = {
 export default function AppStack() {
   const isFocused = useVisibilityTabBar();
 
-  const tabBar = (props: any) => {
+  const tabBar = (props: BottomTabBarProps) => {
     return isFocused && <TabBar {...props} />;
   };
 

@@ -15,6 +15,7 @@ const tasksReducer = (
     case TYPE_TASKS.GET_TASKS_REQUEST:
       return {
         ...state,
+        tasks: null,
         loading: true,
         error: null,
       };

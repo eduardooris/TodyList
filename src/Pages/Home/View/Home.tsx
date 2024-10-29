@@ -1,11 +1,11 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { useHome } from "../Logic/Home.logic";
 import { useCallback } from "react";
 import { Task } from "../../../interface/Taks";
 import Button from "../../../components/Button";
 import ListEmptyComponent from "../../../components/ListEmptyComponent";
 import Add from "../../../components/Add";
-
+import ITask from "../../../components/Task";
 interface HomeProps {
   navigation: {
     navigate: (route: string) => void;
@@ -14,14 +14,14 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
-  const { tasks, loading, error } = useHome();
+  const { tasks, loading, updateTasks } = useHome();
 
   const renderItem = useCallback(
     ({ item }: { item: Task }) => {
       return (
-        <Text>
-          {item.title} {item.description}
-        </Text>
+        <Pressable onPress={() => updateTasks({ id: item.id })}>
+          <ITask {...item} />
+        </Pressable>
       );
     },
     [tasks]
@@ -29,10 +29,13 @@ export default function Home(props: HomeProps) {
 
   return (
     <>
+      <View></View>
       <FlatList
         data={tasks}
         renderItem={renderItem}
         contentContainerStyle={styles.container}
+        ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
+        showsVerticalScrollIndicator={false}
         ListEmptyComponent={
           <ListEmptyComponent loading={loading}>
             Nenhum conteúdo encontrado!
@@ -41,13 +44,6 @@ export default function Home(props: HomeProps) {
         keyExtractor={(item) => item.id.toString()}
       />
       <Add onPress={() => props.navigation.navigate("CreateTask")} />
-      {/* <Button
-        size="large"
-        type="solid"
-        onPress={() => props.navigation.navigate("CreateTask")}
-      >
-        Criar Tarefa
-      </Button> */}
     </>
   );
 }
@@ -55,5 +51,8 @@ export default function Home(props: HomeProps) {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
+    marginTop: 70,
+    paddingHorizontal: 20,
+    paddingBottom: 260,
   },
 });

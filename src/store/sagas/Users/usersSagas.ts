@@ -14,7 +14,6 @@ export function* usersSagas(action: Action) {
       mutation: GET_USERS,
       variables: { isn_usuario: action.payload },
     });
-
     yield put(setUsersSuccess(data.getUsers));
   } catch (error: any) {
     yield put(setUsersFailure(error.message));

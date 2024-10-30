@@ -15,10 +15,17 @@ const tasksReducer = (
     case TYPE_TASKS.GET_TASKS_REQUEST:
       return {
         ...state,
-        tasks: null,
         loading: true,
         error: null,
       };
+
+    case TYPE_TASKS.DELETE_TASKS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+
     case TYPE_TASKS.GET_TASKS_SUCCESS:
       return {
         ...state,

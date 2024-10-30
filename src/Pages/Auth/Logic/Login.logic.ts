@@ -21,8 +21,8 @@ export const useLogin = () => {
   });
 
   const [form, setForm] = useForm<Login>({
-    email: "admin",
-    password: "admin",
+    email: "admin2",
+    password: "admin2",
   });
 
   useEffect(() => {

@@ -12,8 +12,7 @@ export default gql`
         id
         isn_usuario
         comment
-        dsc_annex
-        date
+        date_created
       }
     }
   }

@@ -1,7 +1,6 @@
 import { call, put } from "redux-saga/effects";
 import LOGIN_MUTATION from "../../../graphql/mutations/login";
 import client from "../../apollo";
-import { getTasksSaga } from "../Tasks/tasksSagas";
 import { setLoginSuccess, setLoginFailure } from "../../actions/Login";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { setTasksRequest } from "../../actions/Task";

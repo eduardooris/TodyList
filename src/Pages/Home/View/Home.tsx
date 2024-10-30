@@ -1,11 +1,13 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { useHome } from "../Logic/Home.logic";
-import { useCallback } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { Task } from "../../../interface/Taks";
-import Button from "../../../components/Button";
 import ListEmptyComponent from "../../../components/ListEmptyComponent";
 import Add from "../../../components/Add";
 import ITask from "../../../components/Task";
+import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
 interface HomeProps {
   navigation: {
     navigate: (route: string) => void;
@@ -14,12 +16,25 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
-  const { tasks, loading, updateTasks } = useHome();
+  const {
+    tasks,
+    loading,
+    showModal,
+    snapPoints,
+    handleSheetChange,
+    deleteTask,
+    bottomSheetRef,
+    updateTasks,
+    form,
+    setForm,
+    addComment,
+    comments,
+  } = useHome();
 
   const renderItem = useCallback(
     ({ item }: { item: Task }) => {
       return (
-        <Pressable onPress={() => updateTasks({ id: item.id })}>
+        <Pressable onPress={() => showModal(item)}>
           <ITask {...item} />
         </Pressable>
       );
@@ -30,6 +45,7 @@ export default function Home(props: HomeProps) {
   return (
     <>
       <View></View>
+
       <FlatList
         data={tasks}
         renderItem={renderItem}
@@ -44,6 +60,39 @@ export default function Home(props: HomeProps) {
         keyExtractor={(item) => item.id.toString()}
       />
       <Add onPress={() => props.navigation.navigate("CreateTask")} />
+      <BottomSheet
+        ref={bottomSheetRef}
+        snapPoints={snapPoints}
+        enableDynamicSizing={false}
+        onChange={handleSheetChange}
+        // onChange={handleSheetChanges}
+      >
+        <BottomSheetView>
+          {comments?.map(({ comment, id }) => {
+            return (
+              <Text key={id} style={{ fontSize: 20 }}>
+                {comment}
+              </Text>
+            );
+          })}
+          <Button type="solid" size="large" onPress={deleteTask}>
+            Excluir
+          </Button>
+          <Button type="solid" size="large" onPress={updateTasks}>
+            Atualizar
+          </Button>
+
+          <Input
+            label="Comentário"
+            placeholder="Digite um comentário"
+            value={form.comment}
+            onChangeText={(text) => setForm({ comment: text })}
+          />
+          <Button type="solid" size="large" onPress={addComment}>
+            Adicionar comentário
+          </Button>
+        </BottomSheetView>
+      </BottomSheet>
     </>
   );
 }

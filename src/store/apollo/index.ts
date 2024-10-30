@@ -3,7 +3,7 @@ import { setContext } from "@apollo/client/link/context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ApolloLink, from } from "@apollo/client";
 
-export const URL_PRODUCTION = "http://localhost:3000/graphql";
+export const URL_PRODUCTION = "http://192.168.100.23:3000/graphql";
 
 const httpLink = createHttpLink({
   uri: URL_PRODUCTION,

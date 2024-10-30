@@ -2,13 +2,16 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Design } from "../../util/Design";
 import If from "../If";
+
+type IconName = React.ComponentProps<typeof MaterialIcons>["name"];
+
 interface ContainerProps {
   navigation: {
     goBack: () => void;
   };
   onPress?: () => void;
   title?: string;
-  icon?: string;
+  icon?: IconName;
 
   children: React.ReactNode;
 }
@@ -57,8 +60,9 @@ const styles = StyleSheet.create({
   },
   tabNavigation: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     paddingVertical: 10,
+    paddingHorizontal: 25,
   },
   content: {
     flexGrow: 1,

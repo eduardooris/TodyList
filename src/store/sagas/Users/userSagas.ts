@@ -5,7 +5,7 @@ import {
 import { put, call } from "redux-saga/effects";
 import GET_USER from "../../../graphql/querys/getTasks";
 import client from "../../apollo";
-import { User } from "../../../interface/User";
+import { User, UserDetail } from "../../../interface/User";
 
 interface Action {
   type: string;
@@ -19,14 +19,13 @@ export function* userDetailSagas(action: Action) {
       variables: { isn_usuario: action.payload.id },
     });
 
-    const { tasks } = data.getTasks;
+    const tasks = data.getTasks;
 
-    const user = {
-      id: action.payload.id,
-      username: action.payload.username,
-      email: action.payload.email,
-      token: action.payload.token,
-      ...tasks,
+    const user: UserDetail = {
+      id: action.payload.id!,
+      username: action.payload.username!,
+      email: action.payload.email!,
+      tasks,
     };
 
     yield put(setUserDetailSuccess(user));

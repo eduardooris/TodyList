@@ -1,6 +1,6 @@
-import { TYPE_USER_DETAIL, UserDetail } from "../../../interface/User";
+import { TYPE_USER_DETAIL, User, UserDetail } from "../../../interface/User";
 
-const setUserDetailRequest = (payload: string) => ({
+const setUserDetailRequest = (payload: User) => ({
   type: TYPE_USER_DETAIL.GET_USER_DETAIL_REQUEST,
   payload,
 });
